@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Social Media Privacy Checker</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif; /* Modern font */
+            margin: 0;
+            padding: 0;
+            background-image: url('alex-brinkman-d4uPQo9EPE8-unsplash.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            display: flex;
+            justify-content: flex-start; /* Align content to the left */
+            align-items: flex-start; /* Align content to the top */
+            height: 100vh;
+            text-align: left; /* Align text to the left */
+            padding: 20px; /* Add padding for spacing */
+        }
+
+        /* Overlay to darken the background image */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6); /* Darker overlay for better contrast */
+            z-index: 1;
+        }
+
+        /* Welcome Container */
+        .welcome-container {
+            max-width: 600px;
+            padding: 20px;
+            position: relative;
+            z-index: 2; /* Ensure content is above the overlay */
+            margin-top: 10%; /* Move content down slightly */
+            margin-left: 10%; /* Move content to the left */
+        }
+
+        .welcome-container h1 {
+            font-size: 56px; /* Larger font size */
+            margin-bottom: 20px;
+            color: #fff; /* White text */
+            font-weight: 700; /* Bold font */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+        }
+
+        .welcome-container p {
+            font-size: 22px; /* Slightly larger font size */
+            margin-bottom: 30px;
+            color: #e0e0e0; /* Light gray text */
+            line-height: 1.6; /* Improve readability */
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Text shadow */
+        }
+
+        /* Button Style */
+        .welcome-container button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+        }
+
+        .welcome-container button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px); /* Add a slight lift effect on hover */
+        }
+    </style>
+    <!-- Add Google Fonts for Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Welcome Container -->
+    <div class="welcome-container">
+        <h1>Social Media Privacy Checker</h1>
+        <p>Protect your privacy on social media with our tools and tips. Click below to get started.</p>
+        <button onclick="redirectToMain()">Go to Main Website</button>
+    </div>
+
+    <!-- JavaScript for Redirection -->
+    <script>
+        function redirectToMain() {
+            // Replace 'main-website.html' with the actual URL of your main website
+            window.location.href = 'test.html';
+        }
+    </script>
+</body>
+</html>

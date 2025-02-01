@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Web Scan</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #2a2a2a;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .scan-options {
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .scan-section {
+      margin-top: 1rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    input {
+      padding: 0.75rem;
+      border: 1px solid #444;
+      border-radius: 5px;
+      width: 80%;
+      margin-bottom: 1rem;
+      background-color: #333;
+      color: #ffffff;
+    }
+
+    .result {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #ff6b6b;
+    }
+
+    .features {
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .features h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .features ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+
+    .features li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dark Web Scan</h1>
+    <p>Check if your email or password has been compromised in data breaches.</p>
+    
+    <div class="scan-options">
+      <button id="emailScanBtn" class="btn">Scan Email</button>
+      <button id="passwordScanBtn" class="btn">Scan Password</button>
+    </div>
+
+    <div id="emailScan" class="scan-section hidden">
+      <input type="email" id="emailInput" placeholder="Enter your email">
+      <button onclick="checkEmail()" class="btn">Check Email</button>
+      <p id="emailResult" class="result"></p>
+    </div>
+
+    <div id="passwordScan" class="scan-section hidden">
+      <input type="password" id="passwordInput" placeholder="Enter your password">
+      <button onclick="checkPassword()" class="btn">Check Password</button>
+      <p id="passwordResult" class="result"></p>
+    </div>
+
+    <div class="features">
+      <h2>Features</h2>
+      <ul>
+        <li>Check if your email is on the dark web.</li>
+        <li>Verify if your password has been leaked.</li>
+        <li>Get actionable tips to secure your accounts.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Toggle between email and password scan
+    document.getElementById('emailScanBtn').addEventListener('click', () => {
+      document.getElementById('emailScan').classList.remove('hidden');
+      document.getElementById('passwordScan').classList.add('hidden');
+    });
+
+    document.getElementById('passwordScanBtn').addEventListener('click', () => {
+      document.getElementById('passwordScan').classList.remove('hidden');
+      document.getElementById('emailScan').classList.add('hidden');
+    });
+
+    // Mock API for email check (replace with actual API call)
+    function checkEmail() {
+      const email = document.getElementById('emailInput').value;
+      const resultElement = document.getElementById('emailResult');
+
+      if (!email) {
+        resultElement.innerText = 'Please enter a valid email address.';
+        return;
+      }
+
+      // Simulate API call
+      resultElement.innerText = 'Scanning...';
+      setTimeout(() => {
+        const isCompromised = Math.random() > 0.5; // Random result for demo
+        if (isCompromised) {
+          resultElement.innerText =  'Your email was found in a data breach. Change your passwords immediately';
+        } else {
+          resultElement.innerText = ' Your email is safe! No breaches found';
+        }
+      }, 1500);
+    }
+
+    // Mock API for password check (replace with actual API call)
+    function checkPassword() {
+      const password = document.getElementById('passwordInput').value;
+      const resultElement = document.getElementById('passwordResult');
+
+      if (!password) {
+        resultElement.innerText = 'Please enter a password.';
+        return;
+      }
+
+      // Simulate API call
+      resultElement.innerText = 'Scanning...';
+      setTimeout(() => {
+        const isCompromised = Math.random() > 0.5; // Random result for demo
+        if (isCompromised) {
+          resultElement.innerText = '⚠ Your password was found in a data breach. Change it immediately!';
+        } else {
+          resultElement.innerText = '✅ Your password is safe! No breaches found.';
+        }
+      }, 1500);
+    }
+  </script>
+</body>
+</html>

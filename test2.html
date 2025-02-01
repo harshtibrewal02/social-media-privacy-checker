@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Privacy Checker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f4ff, #e8eaff, #f3e8ff);
+            padding: 20px;
+            color: black;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background-color: #6366f1;
+        }
+
+        .btn-primary:hover {
+            background-color: #4f46e5;
+        }
+
+        .btn-success {
+            background-color: #22c55e;
+        }
+
+        .btn-success:hover {
+            background-color: #16a34a;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .alert-success {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .alert-warning {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .alert-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: black;
+            font-size: 0.9rem;
+        }
+
+        .results-list {
+            list-style-position: inside;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: #6b7280;
+        }
+
+        .input-with-icon {
+            padding-left: 35px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Social Media Privacy Checker</h1>
+        <p>Check your profile privacy and view public profiles</p>
+
+        <div class="card">
+            <div class="form-group">
+                <select id="platform">
+                    <option value="Instagram">Instagram</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <input type="text" id="username" placeholder="Enter username" class="input-with-icon">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                    <input type="url" id="profileUrl" placeholder="Profile URL (auto-filled)" class="input-with-icon">
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button id="openProfileBtn" class="btn-primary">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    Open Profile
+                </button>
+                <button id="checkPrivacyBtn" class="btn-success">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Check Privacy
+                </button>
+            </div>
+        </div>
+
+        <div id="results"></div>
+
+        <footer>
+            <p>&copy; 2025 Social Media Privacy Checker. All rights reserved.</p>
+            <p>This tool is for informational purposes only. Always review your privacy settings manually.</p>
+        </footer>
+    </div>
+
+    <script>
+        const platformPatterns = {
+            Instagram: {
+                username: /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/,
+                baseUrl: "www.instagram.com/",
+                urlPattern: /^(?:https?:\/\/)?(?:www\.)?instagram\.com\/[a-zA-Z0-9_.]+(\/)?$/
+            },
+            Twitter: {
+                username: /^[a-zA-Z0-9_]{1,15}$/,
+                baseUrl: "twitter.com/",
+                urlPattern: /^(?:https?:\/\/)?(?:www\.)?twitter\.com\/[a-zA-Z0-9_]+(\/)?$/
+            },
+            Facebook: {
+                username: /^[a-zA-Z0-9.]{5,}$/,
+                baseUrl: "www.facebook.com/",
+                urlPattern: /^(?:https?:\/\/)?(?:www\.)?facebook\.com\/[a-zA-Z0-9.]+(\/)??$/
+            },
+            LinkedIn: {
+                username: /^[a-zA-Z0-9-]{3,100}$/,
+                baseUrl: "www.linkedin.com/in/",
+                urlPattern: /^(?:https?:\/\/)?(?:www\.)?linkedin\.com\/in\/[a-zA-Z0-9-]+(\/)?$/
+            }
+        };
+
+        const platformSelect = document.getElementById('platform');
+        const usernameInput = document.getElementById('username');
+        const profileUrlInput = document.getElementById('profileUrl');
+        const openProfileBtn = document.getElementById('openProfileBtn');
+        const checkPrivacyBtn = document.getElementById('checkPrivacyBtn');
+        const resultsDiv = document.getElementById('results');
+
+        usernameInput.addEventListener('input', (e) => {
+            const platform = platformSelect.value;
+            const username = e.target.value;
+            const baseUrl = platformPatterns[platform].baseUrl;
+            profileUrlInput.value = username ? `https://${baseUrl}${username}` : '';
+        });
+
+        openProfileBtn.addEventListener('click', () => {
+            const url = profileUrlInput.value;
+            if (!url) {
+                showAlert('Please enter a profile URL first.', 'error');
+                return;
+            }
+
+            let urlToOpen = url;
+            if (!urlToOpen.startsWith('http://') && !urlToOpen.startsWith('https://')) {
+                urlToOpen = 'https://' + urlToOpen;
+            }
+
+            window.open(urlToOpen, '_blank', 'noopener,noreferrer');
+        });
+
+        checkPrivacyBtn.addEventListener('click', () => {
+            if (!usernameInput.value && !profileUrlInput.value) {
+                showAlert('Please enter a username or profile URL.', 'error');
+                return;
+            }
+
+            checkPrivacyBtn.disabled = true;
+            checkPrivacyBtn.textContent = 'Checking...';
+
+            setTimeout(() => {
+                const privacyChecks = {
+                    profileVisibility: Math.random() > 0.5,
+                    photoTagging: Math.random() > 0.5,
+                    twoFactorAuth: Math.random() > 0.5,
+                    recentLoginHistory: Math.random() > 0.5,
+                    connectedApps: Math.random() > 0.5
+                };
+
+                const issues = [];
+                if (!privacyChecks.profileVisibility) issues.push("Profile is publicly visible");
+                if (!privacyChecks.photoTagging) issues.push("Photo tagging is enabled for everyone");
+                if (!privacyChecks.twoFactorAuth) issues.push("Two-factor authentication is disabled");
+                if (!privacyChecks.recentLoginHistory) issues.push("Unusual login activity detected");
+                if (!privacyChecks.connectedApps) issues.push("Multiple third-party apps connected");
+
+                const riskScore = issues.length;
+                const status = riskScore === 0 ? 'success' : riskScore < 3 ? 'warning' : 'error';
+                
+                showResults(platformSelect.value, status, issues);
+                checkPrivacyBtn.disabled = false;
+                checkPrivacyBtn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Check Privacy';
+            }, 1500);
+        });
+
+        function showAlert(message, type) {
+            showResults(platformSelect.value, type, [message]);
+        }
+
+        function showResults(platform, status, details) {
+            const statusIcons = {
+                success: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path>',
+                warning: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>',
+                error: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>'
+            };
+
+            const resultsHTML = `
+                <div class="alert alert-${status}">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            ${statusIcons[status]}
+                        </svg>
+                        <strong>Privacy Analysis for ${platform} profile: ${usernameInput.value || 'Anonymous'}</strong>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <strong>Privacy Check Results:</strong>
+                        <ul class="results-list">
+                            ${details.map(detail => `<li>${detail}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            resultsDiv.innerHTML = resultsHTML;
+        }
+    </script>
+</body>
+</html>

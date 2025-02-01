@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Privacy Checker</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e2f;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+        }
+
+        nav .logo img {
+            height: 100px; /* Larger height for the logo */
+        }
+
+        nav .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav .nav-links li {
+            margin-left: 20px;
+        }
+
+        nav .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav .nav-links a:hover {
+            color: #007BFF;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            text-align: center;
+            padding: 100px 20px;
+            background-image: url('assets/background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .welcome h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .welcome p {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .welcome button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px;
+        }
+
+        .welcome button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Tips Section */
+        .tips {
+            padding: 50px 20px;
+            background-color: #2a2a40;
+        }
+
+        .tips h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .tip {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; /* Reduced margin */
+        }
+
+        .tip img {
+            width: 100px; /* Smaller image size */
+            height: 100px; /* Smaller image size */
+            border-radius: 10px;
+            margin-right: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .tip img:hover {
+            transform: scale(1.05); /* Enlarge image on hover */
+        }
+
+        .tip p {
+            font-size: 16px; /* Smaller font size */
+            margin: 0; /* Remove default margin */
+        }
+
+        /* Videos Section */
+        .videos {
+            padding: 50px 20px;
+            background-color: #2a2a40;
+        }
+
+        .videos h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        /* Carousel Container */
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px; /* Curved border for the container */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .carousel-item iframe {
+            width: 100%;
+            height: 300px; /* Reduced height */
+            border: none;
+            border-radius: 20px; /* Curved border for the iframe */
+        }
+
+        /* Carousel Dots */
+        .carousel-dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .carousel-dots span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #bbb;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .carousel-dots span.active {
+            background-color: #007BFF;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            margin-top: 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Adjust logo size for phones */
+            nav .logo img {
+                height: 60px; /* Smaller height for phones */
+            }
+
+            .welcome h1 {
+                font-size: 36px;
+            }
+
+            .welcome p {
+                font-size: 18px;
+            }
+
+            .tip {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .tip img {
+                margin-bottom: 10px; /* Reduced margin */
+            }
+
+            .carousel-item iframe {
+                height: 200px; /* Smaller height for phones */
+            }
+        }
+
+        @media (min-width: 1200px) {
+            /* Adjust logo size for larger screens */
+            nav .logo img {
+                height: 120px; /* Larger height for big screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <!-- Replace 'logo.png' with the path to your logo image -->
+            <img src="CIRCLE.jpg" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#welcome">Home</a></li>
+            <li><a href="#tips">Privacy Tips</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="test4.html">Terms & Conditions</a></li> <!-- Link to Terms page -->
+            <li><a href="test5.html">Privacy Policy</a></li> <!-- Link to Privacy page -->
+            <li><a href="test6.html">Feedback</a></li> <!-- Link to Feedback page -->
+        </ul>
+    </nav>
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="welcome">
+        <h1>Welcome! Explore, Discover, and Enjoy</h1>
+        <p>Protect your privacy on social media with our tools and tips.</p>
+        <button onclick="location.href='#tips'">Get Started</button>
+        <button onclick="location.href='test2.html'">Privacy Check</button>
+        <button onclick="location.href='test7.html'">Dark Web</button> <!-- Link to Terms page -->
+    </section>
+
+    <!-- Privacy Tips Section -->
+    <section id="tips" class="tips">
+        <h2>Privacy Tips</h2>
+        <div class="tip">
+            <img src="pics/pic1.jpg" alt="Tip 1">
+            <p><strong>Use Strong Passwords:</strong> Protect your social media accounts by always creating strong, unique passwords that are difficult to guess. <br>Avoid using common phrases or easily accessible personal information, and consider using a mix of letters, numbers, and special characters.</p>
+        </div>
+        <div class="tip">
+            <img src="pics/pic2.png" alt="Tip 2">
+            <p><strong>Enable Two-Factor Authentication:</strong> Strengthen your account security by enabling two-factor authentication (2FA), which adds an extra layer of protection.<br> This ensures that even if your password is compromised, unauthorized access is prevented.</p>
+        </div>
+        <div class="tip">
+            <img src="pic3.png" alt="Tip 3">
+            <p><strong>Review Privacy Settings:</strong> Stay in control of your online presence by regularly reviewing and updating your privacy settings on social media platforms. <br>Ensure your personal information is shared only with those you trust.</p>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos" class="videos">
+        <h2>Educate Yourself</h2>
+        <!-- Video Carousel -->
+        <div class="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube.com/embed/UhhYSrUHnao?si=fX14jwVTkIWSkj7M" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube-nocookie.com/embed/JO55V34EnK8?si=BtKOQI9fFcc8dgG5" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube.com/embed/HxySrSbSY7o?si=z6nAepXGTRqWMQuA" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube.com/embed/0gv2pTlcRk8?si=EKcUlSaankDo1icn" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube.com/embed/Czg_9C7gw0o?si=Fso8HPYGrRbZzXYr" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active" onclick="showSlide(0)"></span>
+                <span class="dot" onclick="showSlide(1)"></span>
+                <span class="dot" onclick="showSlide(2)"></span>
+                <span class="dot" onclick="showSlide(3)"></span>
+                <span class="dot" onclick="showSlide(4)"></span>
+                <span class="dot" onclick="showSlide(5)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Social Media Privacy Checker. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Video Carousel Logic
+        let videoSlideIndex = 0;
+        const videoSlides = document.querySelectorAll('.videos .carousel-item');
+        const videoDots = document.querySelectorAll('.videos .carousel-dots .dot');
+
+        function showSlide(index) {
+            videoSlideIndex = index;
+            const offset = -videoSlideIndex * 100;
+            document.querySelector('.videos .carousel-inner').style.transform = `translateX(${offset}%)`;
+            videoDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                videoSlideIndex = (videoSlideIndex - 1 + videoSlides.length) % videoSlides.length;
+                showSlide(videoSlideIndex);
+            } else if (e.key === 'ArrowRight') {
+                videoSlideIndex = (videoSlideIndex + 1) % videoSlides.length;
+                showSlide(videoSlideIndex);
+            }
+        });
+
+        // Auto-slide for video carousel (2 seconds)
+        setInterval(() => {
+            videoSlideIndex = (videoSlideIndex + 1) % videoSlides.length;
+            showSlide(videoSlideIndex);
+        }, 2000);
+    </script>
+</body>
+</html>

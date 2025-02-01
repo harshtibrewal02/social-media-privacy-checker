@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 50px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #00d1ff;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .terms-content {
+            margin-top: 20px;
+        }
+
+        .terms-content h2 {
+            color: #00d1ff;
+            margin-bottom: 15px;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .terms-content p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .terms-content ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .terms-content ul li {
+            margin-bottom: 10px;
+        }
+
+        .terms-content a {
+            color: #00d1ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .terms-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Interactive Checkbox */
+        .accept-terms {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+
+        .accept-terms:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .accept-terms input {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .accept-terms label {
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Button */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #00d1ff;
+            color: #1a1a2e;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #00b8e6;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #e0e0e0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .terms-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .terms-content p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Terms and Conditions</h1>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="terms-content">
+            <h2>Introduction</h2>
+            <p>Welcome to our website. By accessing or using our services, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.</p>
+
+            <h2>User Responsibilities</h2>
+            <p>As a user of this website, you agree to:</p>
+            <ul>
+                <li>Provide accurate and complete information when required.</li>
+                <li>Respect the intellectual property rights of others.</li>
+                <li>Not engage in any activity that disrupts or interferes with the website's functionality.</li>
+            </ul>
+
+            <h2>Privacy Policy</h2>
+            <p>Your privacy is important to us. Please review our <a href="#">Privacy Policy</a> to understand how we collect, use, and protect your information.</p>
+
+            <h2>Limitation of Liability</h2>
+            <p>We are not liable for any damages arising from the use of this website or its content. This includes, but is not limited to, direct, indirect, incidental, or consequential damages.</p>
+        </div>
+
+        <!-- Interactive Checkbox -->
+        <div class="accept-terms">
+            <input type="checkbox" id="acceptCheckbox">
+            <label for="acceptCheckbox">I have read and agree to the terms and conditions.</label>
+        </div>
+
+        <!-- Button -->
+        <button class="btn" id="submitBtn" disabled>Submit</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for Interactive Checkbox and Button
+        const acceptCheckbox = document.getElementById('acceptCheckbox');
+        const submitBtn = document.getElementById('submitBtn');
+
+        acceptCheckbox.addEventListener('change', () => {
+            if (acceptCheckbox.checked) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        });
+
+        submitBtn.addEventListener('click', () => {
+            alert('Thank you for accepting the terms and conditions!');
+        });
+    </script>
+</body>
+</html>
